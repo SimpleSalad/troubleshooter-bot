@@ -1,24 +1,17 @@
 {
-	"boom":
-	{
-		"0":
+	"boom": [
 		{
 			"desc": "이건 몰랐을걸? Incredible!",
 			"img": "2a.png",
 			"footer": "Didn't know about this, did you? Incredible!"
 		},
-		"1":
 		{
 			"desc": "끝낼 시간이군. 그럼, 난 이만~.",
 			"img": "3a.png",
 			"footer": "Time to finish this. I'll be taking my leave~."
 		}
-	},
-	"reload": 
-	{
-	},
-	"sync": 
-	{
-	}
+	],
+	"reload": [],
+	"sync": []
 }
 	

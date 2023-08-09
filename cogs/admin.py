@@ -3,12 +3,12 @@ from discord import app_commands
 from discord.ext import commands
 from discord.app_commands import Choice
 
-import cogs.utils.randomazzo
-
 from typing import Literal
 import os
 import json
 import asyncio
+
+from cogs.utils.randomazzo import Randomazzo
 
 
 class Admin(commands.Cog):
@@ -41,10 +41,12 @@ class Admin(commands.Cog):
     @app_commands.check(is_owner)
     @app_commands.command(name = "shutdown", description = "Stops the bot.")
     async def shutdown(self, interaction: discord.Interaction):
-        embed = discord.Embed(title = "Shutting down.", description = "이건 몰랐을걸? Incredible!")
-        embed.set_thumbnail(url='https://wiki.dfo-world.com/images/2/2c/Incredible.png')
-        embed.set_footer(text = "Didn't know about this, did you? Incredible!")
-        await interaction.response.send_message(embed = embed)
+        flavor = Randomazzo("boom").get_flavor()
+        file = discord.File(os.path.dirname(__file__) + "/_img/" + flavor.img, filename = "image.png")
+        embed = discord.Embed(title = "Shutting down.", description = flavor.desc)
+        embed.set_thumbnail(url="attachment://image.png")
+        embed.set_footer(text = flavor.footer)
+        await interaction.response.send_message(file = file, embed = embed)
     
         print("\nShutdown by command.")
         await self.bot.close()
