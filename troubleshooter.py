@@ -16,8 +16,8 @@ class troubleshooter(commands.Bot):
     def __init__(self) -> None:
         intents = discord.Intents.all()
         command_prefix = "fn$"
-        super().__init__(command_prefix=command_prefix,
-                        intents = intents,
+        super().__init__(command_prefix = command_prefix,
+                         intents = intents,
                          owner_id = 88087496189022208,
                          status = discord.Status.do_not_disturb,
                          activity = discord.Game(name = "Dungeon Fighter Online", type = discord.ActivityType.custom))
@@ -41,6 +41,11 @@ class troubleshooter(commands.Bot):
         if imported_cogs == 0:
             print("Nothing loaded, terminating bot.")
             sys.exit()
+        
+        guild = discord.Object(1005139715588112454)
+        self.tree.copy_global_to(guild = guild)
+        synced = await self.tree.sync(guild = guild)
+        print(f"{len(synced)} commands synced at guild {guild.id}.")
 
     async def on_ready(self):
         print(f'{bot.user.name} connected.')
