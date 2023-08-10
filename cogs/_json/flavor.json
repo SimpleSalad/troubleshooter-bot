@@ -6,12 +6,66 @@
 			"footer": "Didn't know about this, did you? Incredible!"
 		},
 		{
+			"desc": "Showtime! 행운을 비네.",
+			"img": "1a.png",
+			"footer": "Showtime! Wish you luck."
+		},
+		{
 			"desc": "끝낼 시간이군. 그럼, 난 이만~.",
 			"img": "3a.png",
 			"footer": "Time to finish this. I'll be taking my leave~."
 		}
 	],
-	"reload": [],
-	"sync": []
+	"reload": [
+		{
+			"desc": "",
+			"img": "1ap.png",
+			"footer": ""
+		},
+		{
+			"desc": "",
+			"img": "2ap.png",
+			"footer": ""
+		},
+		{
+			"desc": "",
+			"img": "3ap.png",
+			"footer": "Hard-boiled. I like the sound of that."
+		}
+	],
+	"sync": [
+		{
+			"desc": "가 볼까?",
+			"img": "sync.png",
+			"footer": "Shall we go?"
+		},
+		{
+			"desc": "시작이군.",
+			"img": "sync.png",
+			"footer": "So it begins."
+		}
+	],
+	"error": [
+		{
+			"desc": "",
+			"img": "msaderres.png",
+			"footer": ""
+		},
+		{
+			"desc": "",
+			"img": "fsaderres.png",
+			"footer": ""
+		},
+		{
+			"desc": "",
+			"img": "enchres.png",
+			"footer": ""
+		},
+		{
+			"desc": "",
+			"img": "museres.png",
+			"footer": ""
+		}
+	]
 }
 	

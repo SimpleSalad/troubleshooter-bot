@@ -10,7 +10,6 @@ from discord import app_commands
 from discord.ext import commands
 
 load_dotenv()
-TOKEN = os.getenv('BOT_TOKEN')
 
 class troubleshooter(commands.Bot):
     def __init__(self) -> None:
@@ -21,6 +20,13 @@ class troubleshooter(commands.Bot):
                          owner_id = 88087496189022208,
                          status = discord.Status.do_not_disturb,
                          activity = discord.Game(name = "Dungeon Fighter Online", type = discord.ActivityType.custom))
+                         
+    def secret_sauce(self, sauce_type):
+        return os.getenv(sauce_type)
+        
+    def generic_error(self, error):
+        embed = discord.Embed(title = "Error!", description = error)
+        return embed
 
     async def setup_hook(self):
         imported_cogs = 0
@@ -51,4 +57,4 @@ class troubleshooter(commands.Bot):
         print(f'{bot.user.name} connected.')
     
 bot = troubleshooter()
-bot.run(TOKEN)
+bot.run(bot.secret_sauce("BOT_TOKEN"))
