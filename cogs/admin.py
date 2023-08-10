@@ -8,7 +8,7 @@ import os
 import json
 import asyncio
 
-from cogs.utils.randomazzo import Randomazzo
+from cogs.utils.randomazzo import make_embed
 
 
 class Admin(commands.Cog):
@@ -24,7 +24,7 @@ class Admin(commands.Cog):
         
         await self.bot.tree.sync()
         
-        await Randomazzo().make_embed(flavor_type = "sync", title = "Commands synced.", interaction = interaction)
+        await make_embed(flavor_type = "sync", title = "Commands synced.", interaction = interaction)
         
     @app_commands.check(is_owner)
     @app_commands.command(name = "clearcommands", description = "Clears commands.")
@@ -33,13 +33,13 @@ class Admin(commands.Cog):
         self.bot.tree.clear_commands(guild = interaction.guild)
         await self.bot.tree.sync()
         
-        await Randomazzo().make_embed(flavor_type = "sync", title = "Commands cleared.", interaction = interaction)
+        await make_embed(flavor_type = "sync", title = "Commands cleared.", interaction = interaction)
         
     
     @app_commands.check(is_owner)
     @app_commands.command(name = "shutdown", description = "Stops the bot.")
     async def shutdown(self, interaction: discord.Interaction):
-        await Randomazzo().make_embed(flavor_type = "boom", title = "Shutting down.", interaction = interaction)
+        await make_embed(flavor_type = "boom", title = "Shutting down.", interaction = interaction)
         print("\nShutdown by command.")
         await self.bot.close()
 
@@ -50,9 +50,9 @@ class Admin(commands.Cog):
         try:
           await self.bot.reload_extension("cogs." + cog.name[:-3])
         except Exception as error:
-            await Randomazzo().make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
+            await make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
         else:
-            await Randomazzo().make_embed(flavor_type = "reload", title = f"`{cog.name}` reloaded.", interaction = interaction)
+            await make_embed(flavor_type = "reload", title = f"`{cog.name}` reloaded.", interaction = interaction)
             
     @app_commands.check(is_owner)
     @app_commands.command(name = "unload", description = "Unload a cog.")
@@ -61,9 +61,9 @@ class Admin(commands.Cog):
         try:
           await self.bot.unload_extension("cogs." + cog.name[:-3])
         except Exception as error:
-            await Randomazzo().make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
+            await make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
         else:
-            await Randomazzo().make_embed(flavor_type = "reload", title = f"`{cog.name}` unloaded.", interaction = interaction)
+            await make_embed(flavor_type = "reload", title = f"`{cog.name}` unloaded.", interaction = interaction)
     
     @app_commands.check(is_owner)
     @app_commands.command(name = "load", description = "Load a cog.")
@@ -72,9 +72,9 @@ class Admin(commands.Cog):
         try:
           await self.bot.load_extension("cogs." + cog.name[:-3])
         except Exception as error:
-            await Randomazzo().make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
+            await make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
         else:
-            await Randomazzo().make_embed(flavor_type = "reload", title = f"`{cog.name}` loaded.", interaction = interaction)
+            await make_embed(flavor_type = "reload", title = f"`{cog.name}` loaded.", interaction = interaction)
 
 async def setup(bot: commands.Bot) -> None:
   await bot.add_cog(Admin(bot))

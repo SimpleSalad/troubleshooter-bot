@@ -8,7 +8,7 @@ import json
 
 from io import StringIO
 
-from cogs.utils.randomazzo import Randomazzo
+from cogs.utils.randomazzo import make_embed
 
 import os
 import json
@@ -38,10 +38,10 @@ class DFO(commands.Cog):
         if not response or "error" in response or not response["rows"]:
             if server == "all":
                 error = f"Character `{name}` not found!"
-                await Randomazzo().make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
+                await make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
             if server != "all":
                 error = f"Character `{name}` not found on server `{server}`!"
-                await Randomazzo().make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
+                await make_embed(flavor_type = "error", title = "Error!", interaction = interaction, desc = error)
         response = response["rows"][0]
         char_id = response["characterId"]
         server_id = response["serverId"]
