@@ -13,6 +13,7 @@ colorama==0.4.5
 commonmark==0.9.1
 discord.py==2.0.0
 discord.py-pagination==0.0.4
+dotenv==17.2.0
 idna==3.3
 jisho-api==0.1.8
 jmespath==1.0.1
