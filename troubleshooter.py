@@ -59,19 +59,18 @@ class troubleshooter(commands.Bot):
 
     async def on_ready(self):
         print(f'{bot.user.name} connected.')
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind((HOST,PORT))
+            s.listen()
+            print(f"Server Listening on {HOST}:{PORT}")
+            conn, addr = s.accept()
+            with conn:
+                print(f"Connected by {addr}")
+                while True:
+                    data = conn.recv(1024)
+                    if not data:
+                        break
+                    conn.sendall(data)
     
 bot = troubleshooter()
 bot.run(bot.secret_sauce("BOT_TOKEN"))
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST,PORT))
-    s.listen()
-    print(f"Server Listening on {HOST}:{PORT}")
-    conn, addr = s.accept()
-    with conn:
-        print(f"Connected by {addr}")
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
-            conn.sendall(data)
