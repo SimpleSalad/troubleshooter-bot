@@ -30,4 +30,4 @@ async def make_embed(flavor_type, title, interaction, desc: str = None, footer: 
     await interaction.response.send_message(file = file, embed = embed)
 
 async def make_error(title, interaction, desc: str = None):
-    await make_embed(flavor_type = "error", title = title, interaction = discord.Interaction, desc = desc)
+    await make_embed(flavor_type = "error", title = title, interaction = interaction, desc = desc)
